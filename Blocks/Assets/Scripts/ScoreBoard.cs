@@ -15,19 +15,10 @@ public class ScoreBoard : MonoBehaviour
     }
     public void ScoreUpdate(int playerNumber)
     {
-        if(playerNumber == 1)
+        if(playerNumber == 0)
             playerTwoScore++;
         else
             playerOneScore++;
         textDisplayer.UpdateValues(playerOneScore.ToString() + "-" + playerTwoScore.ToString());
-    }
-    private void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    //Will call the Restart Method
-    public void InvokeRestartLevel()
-    {
-        Invoke("RestartLevel", 2f);
     }
 }

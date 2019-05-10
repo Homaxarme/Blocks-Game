@@ -5,4 +5,5 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public int playerNumber;
+    public bool dead;
 }

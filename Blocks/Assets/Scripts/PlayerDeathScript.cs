@@ -11,7 +11,7 @@ public class PlayerDeathScript : MonoBehaviour
     Player player;
     Transform transform;
     PlayerMovement movementScript;
-    ScoreBoard gameController;
+    ScoreBoard gameManager;
 
     //If the player has died or not
     bool playerDead;
@@ -22,7 +22,7 @@ public class PlayerDeathScript : MonoBehaviour
         player = GetComponent<Player>();
         transform = GetComponent<Transform>();
         movementScript = GetComponent<PlayerMovement>();
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreBoard>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreBoard>();
         playerDead = false;
 
     }
@@ -37,7 +37,6 @@ public class PlayerDeathScript : MonoBehaviour
                 playerDead = true; //Kills the player so that this code block won't run another time.
                 movementScript.enabled = false; //Kills player input script
                 ReportDeath();//Tells the game Manager that the player has died
-                gameController.InvokeRestartLevel();
             }
         }
     }
@@ -51,7 +50,7 @@ public class PlayerDeathScript : MonoBehaviour
     }
     void ReportDeath()
     {
-        gameController.ScoreUpdate(player.playerNumber);
+        gameManager.ScoreUpdate(player.playerNumber);
         Debug.Log("Player " + player.playerNumber.ToString() + " has died. This has been reported to the GameManager.");
     }
 }

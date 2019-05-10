@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void ApplyPlayerForces(Rigidbody _rigidbody, int _playerNumber, float _force)
     {
         //These inputs corresspond to player one
-        if (_playerNumber == 1)
+        if (_playerNumber == 0)
         {
             if (Input.GetKey("w"))
             {
