@@ -3,27 +3,23 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class ScoreBoard : MonoBehaviour
 {
 
-    TextController textController;
+    private TextDisplayer textDisplayer;
     public int playerOneScore = 0;
     public int playerTwoScore = 0;
     void Start()
     {
-        textController = FindObjectOfType<TextController>();
+        textDisplayer = FindObjectOfType<TextDisplayer>();
     }
-    private void UpdateScoreBoard()
-    {
-        textController.UpdateValues();
-    }
-    public void DeathReported(int playerNumber)
+    public void ScoreUpdate(int playerNumber)
     {
         if(playerNumber == 1)
             playerTwoScore++;
         else
             playerOneScore++;
-        UpdateScoreBoard();
+        textDisplayer.UpdateValues(playerOneScore.ToString() + "-" + playerTwoScore.ToString());
     }
     private void RestartLevel()
     {

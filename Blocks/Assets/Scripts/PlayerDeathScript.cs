@@ -11,7 +11,7 @@ public class PlayerDeathScript : MonoBehaviour
     Player player;
     Transform transform;
     PlayerMovement movementScript;
-    GameController gameController;
+    ScoreBoard gameController;
 
     //If the player has died or not
     bool playerDead;
@@ -22,7 +22,7 @@ public class PlayerDeathScript : MonoBehaviour
         player = GetComponent<Player>();
         transform = GetComponent<Transform>();
         movementScript = GetComponent<PlayerMovement>();
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreBoard>();
         playerDead = false;
 
     }
@@ -51,7 +51,7 @@ public class PlayerDeathScript : MonoBehaviour
     }
     void ReportDeath()
     {
-        gameController.DeathReported(player.playerNumber);
+        gameController.ScoreUpdate(player.playerNumber);
         Debug.Log("Player " + player.playerNumber.ToString() + " has died. This has been reported to the GameManager.");
     }
 }

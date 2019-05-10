@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
-
+using UnityEngine.UI;
 public class GameManagerTests
 {
     [Test]
     public void TestScoreUpdate()
     {
-        TextController textController = new GameObject().AddComponent<TextController>();
-        GameController gameManager = new GameObject().AddComponent<GameController>();
+        GameObject textHolder = new GameObject();
+        Text text = textHolder.AddComponent<Text>();
+        TextDisplayer textDisplayer = textHolder.AddComponent<TextDisplayer>();
 
-        gameManager.DeathReported(1);
-        int result = gameManager.playerTwoScore;
+        ScoreBoard scoreBoard = new GameObject().AddComponent<ScoreBoard>();
+
+        scoreBoard.ScoreUpdate(1);
+        int result = scoreBoard.PlayerTwoScore;
 
         Assert.AreEqual(1, result);
     }
