@@ -1,27 +1,38 @@
 ﻿using UnityEngine;
 
+//This script needs a rigidbody and the Player script to work
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private bool playerOne;
+    //Says which player this is
+    int playerNumber;
 
-    private Rigidbody rigidbody;
+    //Gets the player rigidbody
+    Rigidbody rigidbody;
 
+    //The amount of force to use when moving the player
     [SerializeField]
     private float force = 100f;
 
+    //Sets the rigidbody variable
     private void Start()
     {
+        //Gets the rigidbody component inside the player object
         rigidbody = GetComponent<Rigidbody>();
+        //Sets the player number so the script knows which inputs to use
+        playerNumber = GetComponent<Player>().playerNumber;
     }
+    //Applies the function that moves the player
     void FixedUpdate()
     {
-        ApplyPlayerForces(rigidbody, playerOne, force);
+        ApplyPlayerForces(rigidbody, playerNumber, force);
     }
-    void ApplyPlayerForces(Rigidbody _rigidbody, bool _playerOne, float _force)
+    //Function to move the player
+    void ApplyPlayerForces(Rigidbody _rigidbody, int _playerNumber, float _force)
     {
-        if (_playerOne)
+        //These inputs corresspond to player one
+        if (_playerNumber == 1)
         {
             if (Input.GetKey("w"))
             {
@@ -40,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
                 _rigidbody.AddForce(-_force * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             }
         }
+        //These inputs correspond to player two
         else
         {
             if (Input.GetKey("up"))
