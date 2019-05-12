@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreen: {fileID: 1225833744}
+  pointsRequired: 5
 --- !u!4 &583920145
 Transform:
   m_ObjectHideFlags: 0

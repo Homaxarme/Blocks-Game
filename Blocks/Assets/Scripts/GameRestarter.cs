@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameRestarter : MonoBehaviour
 {
     [SerializeField] private GameObject endScreen;
+    [SerializeField] private int pointsRequired = 5;
     /// <summary>
     /// Sets the position of a player back to their spawn point
     /// </summary>
@@ -18,7 +19,7 @@ public class GameRestarter : MonoBehaviour
     public IEnumerator UpdateGameState()
     {
         yield return new WaitForSeconds(2);
-        if(GetComponent<ScoreBoard>().playerOneScore == 10 || GetComponent<ScoreBoard>().playerTwoScore == 10)
+        if(GetComponent<ScoreBoard>().playerOneScore == pointsRequired || GetComponent<ScoreBoard>().playerTwoScore == pointsRequired)
         {
             EndGame();
         }
@@ -29,15 +30,15 @@ public class GameRestarter : MonoBehaviour
     private void EndGame()
     {
         endScreen.SetActive(true);
-        if (GetComponent<ScoreBoard>().playerOneScore == 10)
+        if (GetComponent<ScoreBoard>().playerOneScore == pointsRequired)
         {
             endScreen.transform.Find("Player# Wins").GetComponent<Text>().text = "Player One Wins";
-            endScreen.transform.Find("Player# Wins").GetComponent<Text>().color = new Color(255, 0, 0);
+            endScreen.transform.Find("Player# Wins").GetComponent<Text>().color = Color.red;
         }
         else
         {
             endScreen.transform.Find("Player# Wins").GetComponent<Text>().text = "Player Two Wins";
-            endScreen.transform.Find("Player# Wins").GetComponent<Text>().color = new Color(0, 0, 255);
+            endScreen.transform.Find("Player# Wins").GetComponent<Text>().color = Color.blue;
         }
     }
 
