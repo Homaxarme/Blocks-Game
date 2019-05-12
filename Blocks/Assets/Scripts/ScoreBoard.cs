@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+[RequireComponent(typeof(GameRestarter))]
 public class ScoreBoard : MonoBehaviour
 {
 
-    private TextDisplayer textDisplayer;
-    public int playerOneScore = 0;
-    public int playerTwoScore = 0;
-    void Start()
+    private int playerOneScore = 0;//The score that the first player has
+    private int playerTwoScore = 0;//The score that the second player has
+    public bool isGameEnded = false;//If a player reports his death, the game ends and the ScoreBoard will no longer count points until the game restarts.
+
+    public void UpdateScores(int playerNumber)
     {
-        textDisplayer = FindObjectOfType<TextDisplayer>();
-    }
-    public void ScoreUpdate(int playerNumber)
-    {
-        if(playerNumber == 0)
-            playerTwoScore++;
-        else
-            playerOneScore++;
-        textDisplayer.UpdateValues(playerOneScore.ToString() + "-" + playerTwoScore.ToString());
+        if (!isGameEnded)
+        {
+            if (playerNumber == 0)
+                playerTwoScore++;
+            else
+                playerOneScore++;
+            GameObject.Find("Score").GetComponent<TextDisplayer>().UpdateValues(playerOneScore.ToString() + "-" + playerTwoScore.ToString());
+            isGameEnded = true;
+            StartCoroutine(GetComponent<GameRestarter>().ResetGame());
+        }
     }
 }
