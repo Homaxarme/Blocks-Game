@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int playerNumber;
+
+    public int playerNumber;//Determines what control to use
+    public bool isDead;//Determines if the player is dead or not
 }
