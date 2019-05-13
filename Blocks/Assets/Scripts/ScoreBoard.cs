@@ -7,8 +7,8 @@ using UnityEngine;
 public class ScoreBoard : MonoBehaviour
 {
 
-    private int playerOneScore = 0;//The score that the first player has
-    private int playerTwoScore = 0;//The score that the second player has
+    public int playerOneScore = 0;//The score that the first player has
+    public int playerTwoScore = 0;//The score that the second player has
     public bool isGameEnded = false;//If a player reports his death, the game ends and the ScoreBoard will no longer count points until the game restarts.
 
     public void UpdateScores(int playerNumber)
@@ -21,7 +21,7 @@ public class ScoreBoard : MonoBehaviour
                 playerOneScore++;
             GameObject.Find("Score").GetComponent<TextDisplayer>().UpdateValues(playerOneScore.ToString() + "-" + playerTwoScore.ToString());
             isGameEnded = true;
-            StartCoroutine(GetComponent<GameRestarter>().ResetGame());
+            StartCoroutine(GetComponent<GameRestarter>().UpdateGameState());
         }
     }
 }
