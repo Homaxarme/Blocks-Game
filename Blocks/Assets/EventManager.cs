@@ -10,10 +10,11 @@ public class EventManager : MonoBehaviour
     {
         canRunGodMode = false;
         Debug.Log("The GodeMode function has started");
-        yield return new WaitForSeconds(Random.Range(30,60));
+        yield return new WaitForSeconds(Random.Range(15,30));
         Debug.Log("The waiting period has ended");
         Player player = GetComponent<PlayerSpawner>().players[playerNumber];
         Material normalMaterial = player.GetComponentInChildren<MeshRenderer>().material;
+        player.GetComponent<PlayerMovement>().force = 75;
         player.GetComponent<Rigidbody>().mass = 10;
         player.GetComponentInChildren<MeshRenderer>().material = goldMaterial;
         Debug.Log("God Mode has been assigned");
@@ -27,6 +28,6 @@ public class EventManager : MonoBehaviour
     private void Update()
     {
         if(canRunGodMode)
-        StartCoroutine(GiveGodMode(Random.Range(0, 2)));
+        StartCoroutine(GiveGodMode(Random.Range(0, 1)));
     }
 }

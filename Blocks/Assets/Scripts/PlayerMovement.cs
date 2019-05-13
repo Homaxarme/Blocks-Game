@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //The amount of force to use when moving the player
     [SerializeField]
-    private float force = 100f;
+    public float force = 100f;
 
     //Applies the function that moves the player
     void FixedUpdate()
