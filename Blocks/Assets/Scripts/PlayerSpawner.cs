@@ -11,7 +11,7 @@ public class PlayerSpawner : MonoBehaviour
     //Pertains to Materials of the players
     [SerializeField] private Material playerOneMaterial;//The Material that is for player one
     [SerializeField] private Material playerTwoMaterial;//The Material that is for player two.
-    private List<Material> materials = new List<Material>();//The List where the above materials are held to apply them to the player using indexes.
+    public List<Material> materials = new List<Material>();//The List where the above materials are held to apply them to the player using indexes.
 
     void Start()
     {
