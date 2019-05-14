@@ -17,7 +17,7 @@ public class EventManager : MonoBehaviour
     {
         canRunGodMode = false;
 
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(1);
 
         Player player = GetComponent<PlayerSpawner>().players[playerNumber];
         Material normalMaterial = player.GetComponentInChildren<MeshRenderer>().material;
@@ -30,7 +30,7 @@ public class EventManager : MonoBehaviour
     private void EnableGodMode(Player player)
     {
         //Make the player a god
-        player.GetComponent<PlayerMovement>().force = 1;
+        player.GetComponent<PlayerMovement>().force = 75;
         player.GetComponent<Rigidbody>().mass = 100;
         player.GetComponentInChildren<MeshRenderer>().material = goldMaterial;
     }
