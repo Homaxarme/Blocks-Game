@@ -17,7 +17,7 @@ public class EventManager : MonoBehaviour
     {
         canRunGodMode = false;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(Random.Range(15,20));
 
         Player player = GetComponent<PlayerSpawner>().players[playerNumber];
         Material normalMaterial = player.GetComponentInChildren<MeshRenderer>().material;

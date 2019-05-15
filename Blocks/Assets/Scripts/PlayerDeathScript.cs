@@ -24,7 +24,8 @@ public class PlayerDeathScript : MonoBehaviour
     //Figures out if the Player has gone out of bounds.
     private bool PlayerOutOfBounds()
     {
-        if (GetComponent<Transform>().position.y <= 0)
+        Transform transform = GetComponent<Transform>();
+        if (transform.position.x > 6 || transform.position.x < -6 || transform.position.z > 6 || transform.position.z < -6)
             return true;
         else
             return false;
